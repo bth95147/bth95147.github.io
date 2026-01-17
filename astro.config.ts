@@ -7,11 +7,6 @@ import remarkMath from 'remark-math'
 
 import { defineConfig } from 'astro/config';
 
-export default defineConfig({
-  site: 'https://bth95147.github.io',
-  base: '/'
-});
-
 // Local integrations
 import rehypeAutolinkHeadings from './src/plugins/rehype-auto-link-headings.ts'
 // Shiki
@@ -31,22 +26,11 @@ import config from './src/site.config.ts'
 
 // https://astro.build/config
 export default defineConfig({
-  // [Basic]
-  site: 'https://astro-pure.js.org',
-  // Deploy to a sub path
-  // https://astro-pure.js.org/docs/setup/deployment#platform-with-base-path
-  // base: '/astro-pure/',
+  site: 'https://bth95147.github.io',
+  base: '/',
+  output: 'static',
   trailingSlash: 'never',
-  // root: './my-project-directory',
-  server: { host: true },
-
-  // [Adapter]
-  // https://docs.astro.build/en/guides/deploy/
-  adapter: vercel(),
-  output: 'server',
-  // Local (standalone)
-  // adapter: node({ mode: 'standalone' }),
-  // output: 'server',
+  adapter: github(),
 
   // [Assets]
   image: {

@@ -30,7 +30,6 @@ export default defineConfig({
   base: '/',
   output: 'static',
   trailingSlash: 'never',
-  adapter: github(),
 
   // [Assets]
   image: {

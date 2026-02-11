@@ -73,7 +73,9 @@ dial tcp: lookup api.telegram.org on [::1]:53: read udp [::1]:38087->[::1]:53: r
 go version -m $(which ./memogram) | grep -i netgo
 ```
 
-空返回，既然没显示 `netgo` ，说明二进制不是用纯 `netgo` 构建的，理论上应该走 `cgo` 系统解析器。Go有两种 DNS 解析器，默认 `cgo` （不依赖 `resolv.conf` ）， `netgo` 纯 Go 的内置解析器（依赖 `/etc/resolv.conf` ）。
+空返回
+
+`cgo` 和 `netgo` 两种方式都会依赖 DNS 服务器配置，只是读取和解析的实现方式不同。 `cgo` 会经过系统网络栈（可能被 Android/VPN 劫持），而 `netgo` 完全绕开 `libc`
 
 先尝试修复一下
 

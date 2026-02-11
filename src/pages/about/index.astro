@@ -1,0 +1,45 @@
+---
+import { Button, Collapse, Spoiler, Timeline } from 'astro-pure/user'
+import PageLayout from '@/layouts/CommonPage.astro'
+import Substats from '@/components/about/Substats.astro'
+import ToolSection from '@/components/about/ToolSection.astro'
+
+const headings = [
+  { depth: 2, slug: 'hobbies', text: 'Hobbies' },
+  { depth: 2, slug: 'social-networks', text: 'Social Networks' },
+]
+---
+
+<PageLayout title='About' {headings} comment>
+  <p>Student / Developer</p>
+  <p>非常感谢你来到我的小天地玩 --- BtH</p>
+  <p>我是苯并三唑，17岁，是山东的高中生</p>
+  <p>性格上，咱比较真诚、细腻，也有点社恐，讨厌社交但又害怕孤独。有时候会追求完美，但也在慢慢学着放过自己。在生活和学习中，咱喜欢把事情系统化，不管是开发、学习、画画，总想做到最好喵～
+  </p>
+  <Button title='Visit my twitter' class='w-fit' href='https://x.com/bth95147' variant='ahead' />
+
+  {/* hobbies */}
+  <h2 id='hobbies'>一些爱好</h2>
+  <ul>
+    <li>2021年开始写代码，平时会折腾 Java、Golang 等后端，当然前端框架也略懂一点～</li>
+    <li>曾经短暂学过化学竞赛，虽然因为身体和文科太差等原因停了，也算是遗憾吧</li>
+    <li>咱还是会画画的，有时会画一些东西</li>
+  </ul>
+
+  {/* social-networks */}
+  <h2 id='social-networks'>账号</h2>
+  <Substats
+    stats={[
+      {
+        platform: 'GitHub',
+        icon: 'github',
+        link: 'https://github.com/ac227',
+        text: 'followers',
+        api: 'github/ac227'
+      }
+    ]}
+  />
+  <p>本页写于 2026-01-17</p>
+  <p>本站建于 2026-01-17</p>
+
+</PageLayout>

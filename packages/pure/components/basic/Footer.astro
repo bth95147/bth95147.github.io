@@ -20,27 +20,51 @@ const footerLink1 = footerConf.links?.filter(({ pos }) => pos === 1) || []
   <div class='border-t pt-5'>
     <div class='flex items-center gap-y-3 max-sm:flex-col sm:justify-between sm:gap-y-0'>
       <div class='flex items-center gap-x-4 gap-y-2 text-muted-foreground max-sm:flex-col'>
-        { /* Position 1 */
-          footerLink1.length > 0 && (
-            <div>
-              {footerLink1.map(({ title, link, style }, index) => (
-                <>
-                  <!- prettier-ignore -->
-                  <a href={link} target='_blank' class={style}>{title}</a>
-                  {index < footerLink1.length - 1 && <span class='mx-1'>•</span>}
-                </>
-              ))}
-            </div>
-          )
-        }
-        {/* Position 2 */}
+
+        <div class="w-full text-center sm:text-left space-y-2 mb-3">
+          <div>
+            <a
+              href="/"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="/images/created-by-human-not-by-ai-white.svg"
+                alt="本站内容由猫猫创作"
+                class="h-7 md:h-8"
+                width="148"
+                height="40"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="text-xs italic text-muted-foreground/75">
+            所有文字与想法均为猫猫独立创作
+          </div>
+        </div>
+
+        {/* Position 1 */}
+        {footerLink1.length > 0 && (
+          <div>
+            {footerLink1.map(({ title, link, style }, index) => (
+              <>
+                {/* prettier-ignore */}
+                <a href={link} target='_blank' class={style}>{title}</a>
+                {index < footerLink1.length - 1 && <span class='mx-1'>•</span>}
+              </>
+            ))}
+          </div>
+        )}
+
+        {/* Position 2 — copyright 行 */}
         <div>
           {config.footer.year}
           {config.author}
           {
             footerConf.links && footerConf.links.length > 0 && (
               <>
-                &
+                &nbsp;&
                 <span>
                   {footerConf.links
                     .filter(({ pos }) => pos === 2)
@@ -54,11 +78,12 @@ const footerLink1 = footerConf.links?.filter(({ pos }) => pos === 1) || []
             )
           }
         </div>
+
         {
           footerConf.credits && (
             <span>
               <a href='https://github.com/withastro/astro' target='_blank'>Astro</a>
-              &
+              &nbsp;&
               <a href='https://github.com/cworld1/astro-theme-pure' target='_blank'>Pure</a>
               theme powered
             </span>
